@@ -141,3 +141,48 @@ List<String> list = Arrays.asList("Gza","Gzb","Gox","Elephant");
 		System.out.println("Min:"+ min);
 ```
 # Stream Max
+
+
+
+-----
+MohanaPriya,Switha
+-------
+# Skip
+
+## Description
+     It returns a stream consisting of the remaining elements of this stream after discarding the first n elements of the stream. If this stream contains fewer than n elements then an empty stream will be returned.
+
+               
+## Syntax
+    Stream<T> skip(long n)
+## coding
+
+ 
+     package com.kgfsl.log4jtest.app;
+     import java.util.ArrayList;
+     import java.util.List;
+     import java.util.stream.Stream;
+
+      public class StreamLimitSkipExample {
+      public static void main(String[] args) {
+      
+      List<Integer> numbers = new ArrayList<>();
+      numbers.add(1);
+      numbers.add(2);
+      numbers.add(3);
+      numbers.add(4);
+      numbers.add(5);
+      numbers.add(6);
+
+      Stream<Integer> stream1 = numbers.stream();
+      // Limit - return new stream of 3 elements
+      System.out.println("--------Stream elements after limiting----------");
+      stream1.limit(3).forEach((a) -> {System.out.println(a);
+      }
+     }
+    }
+## output
+     --------Stream elements after limiting----------
+     1
+     2
+     3
