@@ -126,18 +126,136 @@ public class LambdaDemo {
     }
 }
 ```
-end
+MohanaPriya and Switha
+Skip()
 
-# java 8 features
-# Stream Min
+Description
 
-description
+It returns a stream consisting of the remaining elements of this stream after discarding the first n elements of the stream. If this stream contains fewer than n elements then an empty stream will be returned.
 
-```
-List<String> list = Arrays.asList("Gza","Gzb","Gox","Elephant");
-		String max = list.stream().max(Comparator.comparing(String::valueOf)).get();
-		System.out.println("Max:"+ max);
-		String min = list.stream().min(Comparator.comparing(String::valueOf)).get();
-		System.out.println("Min:"+ min);
-```
-# Stream Max
+Syntax
+
+Stream<T> skip(long n)
+Example
+
+ package com.kgfsl.log4jtest.app;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.stream.Stream;
+
+  public class StreamLimitSkipExample {
+  public static void main(String[] args) {
+  
+  List<Integer> numbers = new ArrayList<>();
+  numbers.add(1);
+  numbers.add(2);
+  numbers.add(3);
+  numbers.add(4);
+  numbers.add(5);
+  numbers.add(6);
+
+  Stream<Integer> stream1 = numbers.stream();
+  // Limit - return new stream of 3 elements
+  System.out.println("--------Stream elements after limiting----------");
+  stream1.limit(3).forEach((a) -> {System.out.println(a);
+  });
+ }
+}
+output
+
+ --------Stream elements after limiting----------
+ 1
+ 2
+ 3
+Limit()
+
+Description
+
+Returns a stream consisting of the elements of this stream, truncated to be no longer than maxSize in length.
+
+Syntax
+
+      Stream<T> limit(long maxSize)	
+Example
+
+       package com.kgfsl.log4jtest.app;
+
+       import java.util.ArrayList;
+       import java.util.List;
+       import java.util.stream.Stream;
+
+       public class StreamLimitSkipExample {
+       public static void main(String[] args) {
+  
+       List<Integer> numbers = new ArrayList<>();
+       numbers.add(1);
+       numbers.add(2);
+       numbers.add(3);
+       numbers.add(4);
+       numbers.add(5);
+       numbers.add(6);
+       Stream<Integer> stream2 = numbers.stream();
+       // Skip - return new stream of remaining elements
+       // after skipping first 2 elements
+       System.out.println("--------Stream elements after skipping----------");
+       stream2.skip(2).forEach((a) -> {
+       System.out.println(a);
+       });
+       }
+       }
+Output
+
+--------Stream elements after skipping----------
+3
+4
+5
+6
+Sort()
+
+Description
+
+Sorting without comparator
+
+Returns a stream consisting of the elements of this stream, sorted according to natural order. If the elements of this stream are not Comparable, a java.lang.ClassCastException may be thrown when the terminal operation is executed.
+
+Sorting using comparator
+
+Returns a stream consisting of the elements of this stream, sorted according to the provided Comparator.
+
+Syntax
+
+Sorting without comparator
+
+ Stream<T> sorted()	
+Sorting using comparator
+
+ Stream<T> sorted(Comparator<? super T> comparator)	
+Example
+
+        package com.kgfsl.log4jtest.app;
+
+        import java.util.*;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Comparator;
+        import java.util.stream.Collectors;
+
+        public class StreamMethodMain {
+        public static void main(String args[]) {
+        List<StreamMethods> list = new ArrayList<StreamMethods>();
+        list.add(new StreamMethods("Mohana", 001, 10000));
+        list.add(new StreamMethods("Mona", 002, 8000));
+        list.add(new StreamMethods("Priya", 003, 90000));
+        list.add(new StreamMethods("Sona", 004, 5000));
+        System.out.println("sorting....");
+        List<StreamMethods> list1 = list.stream().sorted(Comparator.comparing(StreamMethods::getSalary).reversed()).collect(Collectors.toList());
+        list1.forEach(l -> System.out.println("Name:" + l.getName() + "Id:" + l.getId() + "Salary:" + l.getSalary()));
+
+     }
+     }
+Output
+
+Name:Priya  Id:3 Salary:90000
+Name:Mohana Id:1 Salary:10000
+Name:Mona   Id:2 Salary:8000
+Name:Sona   Id:4 Salary:5000
